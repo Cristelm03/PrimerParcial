@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Demo API</title>
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+</head>
+<body class="p-4">
+    <h1>Consumo API Weatherbit</h1>
+    <button id="btn-api" class="btn btn-primary mb-3">Obtener Mensaje</button>
+    <div id="api-result" class="card p-3"></div>
+
+    <script src="./js/query.min.js"></script>
+    <script src="./bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script>
+        $('#btn-api').click(function(){
+            $.ajax({
+                url: 'https://s1uplfovq4.execute-api.us-east-1.amazonaws.com/default/example',
+                method: 'GET',
+                success: function(res){
+                    $('#api-result').html(`<p>${res.mensaje}</p>`);
+                },
+                error: function(){
+                    $('#api-result').html('<p>Error al obtener datos</p>');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
